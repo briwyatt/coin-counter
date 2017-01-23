@@ -15,36 +15,34 @@
 
 
 
-function coinCounter () {
+function coinCounter (currentCoins) {
   // Initialize a JavaScript object to hold the coins
   var coinPurse = {
      quarters: 0,
      dimes: 0,
      nickels: 0,
      pennies: 0 };
-//   return coinPurse;
-var currentCoins = prompt(coinPurse);
-// currentCoins *= 100;
-coinPurse.quarters = currentCoins % 25;
-// console.log(coinPurse.quarters);
-currentCoins -= coinPurse.quarters / 25;
-coinPurse.dimes = (currentCoins - coinPurse.quarters) % 10;
-currentCoins -= coinPurse.dimes / 10;
-coinPurse.nickels = (currentCoins - coinPurse.dimes) % 5;
-currentCoins -= coinPurse.nickels / 5;
-currentCoins -= coinPurse.pennies / 1;
+// var currentCoins = prompt(coinPurse);
+var currentCoins;
+currentCoins *= 100;
 
+var quartersRemainder = currentCoins % 25;
+coinPurse.quarters = (currentCoins - quartersRemainder) / 25;
+
+var dimesRemainder = quartersRemainder % 10;
+coinPurse.dimes = (quartersRemainder - dimesRemainder) / 10;
+
+var nickelsRemainder = dimesRemainder % 5;
+coinPurse.nickels = (dimesRemainder - nickelsRemainder) / 5;
+
+coinPurse.pennies = (nickelsRemainder);
+
+//   return coinPurse;
 
   return coinPurse;
 }
 
-var returnedCoins = coinCounter(coinPurse);
-console.log(coinCounter(coinPurse));
-
-
-returnedCoins();
-
-
+console.log(coinCounter(.67));
 
 
 
